@@ -28,6 +28,7 @@ def irfan():
     rast=random.random();
     veri['erisim']=erisim
     veri['rast']=rast
+    veri['ad']='HAKKI'
     return veri
 
 def user():
