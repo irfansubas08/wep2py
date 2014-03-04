@@ -3,3 +3,52 @@
 Erişim zamanı: {{=erisim}} </br>
 Rastgele Sayı: {{=rast}} </br>
 Adı: {{=ad}}
+Soyad: {{=request.vars.soyad}} <!-- GET ile veri alma  -->
+Yaş: {{=request.vars.yas}} <br>
+{{if request.vars:}}
+    {{if int(request.vars.yas) <=18 :}}
+    <script>alert('Adam Ol Gel!!!!')</script>
+    {{else:}}
+    <script>alert('Adam Adam !!!')</script>
+    {{pass}}
+{{pass}}
+<br>
+<br>
+<!--Formu ekrana ekleme -->
+{{=form}}
+
+
+<!--Formdan dönen elemanları ekrana yazdırma... -->
+Adı: {{=request.vars.adi}}
+Soyadı: {{=request.vars.soyadi}}
+İl: {{=request.vars.il}}
+
+
+<!--
+<br>
+<br>
+<form method='POST'>
+    Adı: <input type='text' name='adi'><br>
+    Soyadı: <input type='text' name='soyadi'><br>
+    İl: <select name='il'>
+              <option>Artvin</option>
+              <option>İstanbul</option>
+              <option>Samsun</option>
+        </select>
+    <br>
+    <select name='yası'>
+          <option>18</option>
+          <option>19</option>
+          <option>20</option>
+          <option>21</option>
+          <option>22</option>
+          <option>23</option>
+     </select>
+    <br>
+    <input type='submit' value='GÖNDER'>
+</form>
+Ad: {{=request.vars.adi}}<br>
+Soyad: {{=request.vars.soyadi}} <br>
+İli: {{=request.vars.il}} <br>
+Yaşı: {{=request.vars.yas}} <br>
+-->

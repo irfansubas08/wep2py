@@ -28,8 +28,57 @@ def irfan():
     rast=random.random();
     veri['erisim']=erisim
     veri['rast']=rast
-    veri['ad']='HAKKI'
+    veri['ad']='İrfan'
+
+    """ Form Oluşturma işlemleri yapılıyor."""
+##Ders: IS_LİST_OF Birden fazla requires yazmamızı sağlayan koddur. örnek: requires = IS_LIST_OF(IS_INT_IN_RANGE(0, 10))
+    veri['form']=FORM('Adı:', INPUT(_name="adi",
+                                    requires=IS_IN_SET(('ali','veli'),error_message='Bu isim listede yok')), # Bu alanda kullanılan 'IS_IN_SET' içindeki veriler girilirse veri girişi onaylanır. Girilmez ise hata mesajı alınır.
+
+                     'Soyadı:', INPUT(_name='soyadi',
+                                      requires=IS_NOT_EMPTY()), #Text girişi oluşturma
+                      # IS_NOT_EMPTY() boş geçilemez anlamındadır.
+
+                      SELECT('Artvin',
+                             'Sinop',
+                             'Samsun',
+                             _name='il'), #Açılır list oluşturma
+                      'YAŞ:', INPUT(_name='yas',
+                                      requires=IS_INT_IN_RANGE()), # IS_INT_IN_RANGE(0,25)  bu aralıkta değer alır [0,24) ,IS_INT_IN_RANGE()
+                      'Email:', INPUT(_name='email',
+                                      requires=IS_EMAIL(error_message='Lütfen email adresinizi doğru bir şekilde yazınız')),
+                      INPUT(_type='submit',
+                           _value='Soruyu Gönder')
+                      )
+
+#####----Gelen veri dolumu boşmu kontrol etmek için amele işi ------###
+        #    if request.vars:
+        #       if request.vars.soyadi:
+        #            response.flash = "Sen Bu İşi Biliyorsun"
+        #        else:
+        #            response.flash ="Etmaaaa Şans"
+
+###--------------
+
+### Form required kontrolu yapıldı form elemanlarına verilen 'requires=IS_NOT_EMPTY()' bu değer ve aşağıdaki kodlar sayesinde###
+
+    if veri['form'].process().accepted:
+        #response.flash='sen bu işi biliyorsun kardeşim.' #flash messaj oluştur.
+        #redirect(URL('/tamam')) #Yönlendirme yapılır. bu alandaki 'tamam' bir işlevin karşılığıdır.
+        if int(request.vars.yas)<=18:
+            response.flash='Adam ol gel!!!'
+        else:
+            response.flash='Adamsın!!!'
+    else:
+        response.flash='Bir yanlışlık var herhalde!!!'
+
+###-----------------
+
     return veri
+
+def tamam():
+    
+    return "<h1>KAYIT BAŞARILI</h1>"
 
 def user():
     """
