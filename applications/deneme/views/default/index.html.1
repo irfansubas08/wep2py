@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+{{=form}}
+<!-- {{=BEAUTIFY(request.vars)}}  Burada formdan gelen verileri güzellerek gösterir. Bu form verilerini bir tablo haline getirir. -->
+{{=db(db.ogrenciler).select()}}
+{{for i in range(1,11):}}
+    {{=i}}
+{{pass}}
