@@ -106,6 +106,8 @@
 'My Sites': 'Sitelerim',
 'Name': 'İsim',
 'New': 'New',
+'No records found': 'No records found',
+'None': 'None',
 'not in': 'not in',
 'Object or table name': 'Nesne ya da tablo adı',
 'Online examples': 'Canlı örnekler',
