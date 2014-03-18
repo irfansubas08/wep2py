@@ -1,0 +1,62 @@
+{{extend 'layout.html'}}
+{{=form}}<!-- {formu render ediyor. -->
+{{=form2}}<!-- {formu render ediyor. -->
+<!-- {{=db(db.ogrenciler).select()}} -->
+<!-- {{=BEAUTIFY(request.vars)}}  Burada formdan gelen verileri güzellerek gösterir. Bu form verilerini bir tablo haline getirir. -->
+
+<!-- verileri düzenlemek için oluşturduğumuz for döngüsü
+{{for i in range(1,11):}}
+<a href="?duzenle={{=i}}">Duzenle{{=i}}</a> <br>
+{{pass}}
+-->
+<div style='width:500px'>
+<table class="table table-bordered">
+<tr class="active">
+    <td>ID</td>
+    <td>ADI</td>
+    <td>SOYADI</td>
+    <td colspan=2>İŞLEMLER</td>
+</tr>
+
+{{for ogr in ogrenciler:}}
+<tr class="warning">
+    <td>{{=ogr.id}}</td>
+    <td>{{=ogr.adi}}</td>
+    <td>{{=ogr.soyadi}}</td>
+    <td><a href="?duzenle={{=ogr.id}}">DÜZENLE</a></td>
+    <td><a href="?sil={{=ogr.id}}">SİL</a></td>
+</tr>
+{{pass}}
+</table>
+</div>
+
+<!-- Örnek olsun diye yaptıklarım
+{{for i in db(db.ogrenciler).select():}}
+    {{if i.adi=='aa':}}
+    <font color='red'>
+            {{=i.adi}}
+    </font>
+    {{else:}}
+    <font color='green'>
+                {{=i.adi}}
+    </font>
+    {{pass}}
+{{pass}}
+-->
+
+
+<br>
+
+
+<!-- 1 den 10'a kadar sayıları yazan -->
+{{for i in range(1,11):}}
+    {{if i%5:}}
+    <font color='red'>
+            {{=i}}
+    </font>
+    {{else:}}
+    <font color='green'>
+                {{=i}}
+    </font>
+    {{pass}}
+{{pass}}
